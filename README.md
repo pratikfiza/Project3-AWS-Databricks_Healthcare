@@ -6,47 +6,8 @@ This project implements a real-world healthcare payer claims data warehouse usin
 The architecture leverages a Medallion (Bronze-Silver-Gold) Data Lakehouse pattern, built on AWS S3, Lambda, Step Functions, and Databricks, ensuring scalability, reliability, and compliance with HIPAA-style data masking.
 
  Architecture Diagram
-                +-------------------+
-                |   Healthcare Payer |
-                |   Claims Source    |
-                +---------+----------+
-                          |
-                          v
-                +-------------------+
-                | AWS Lambda        |
-                | (Daily Ingestion) |
-                +---------+----------+
-                          |
-                          v
-                +-------------------+
-                |   S3 Raw Layer    |
-                |  (Bronze - CSV/JSON) |
-                +---------+----------+
-                          |
-         +----------------+----------------+
-         |                                 |
-         v                                 v
-+-------------------+          +-----------------------+
-| AWS Step Functions|  ----->  | Databricks ETL Jobs   |
-| (Orchestration)   |          |  - Cleansing          |
-+-------------------+          |  - SCD2 Dimensions    |
-                               |  - Delta Lake Storage |
-                               +-----------+-----------+
-                                           |
-                                           v
-                               +-----------------------+
-                               | S3 (Silver & Gold)    |
-                               | Optimized Delta Tables|
-                               +-----------+-----------+
-                                           |
-                          +----------------+----------------+
-                          |                                 |
-                          v                                 v
-             +-------------------+          +------------------------+
-             | Databricks SQL    |          | Amazon Athena          |
-             | Fraud Detection   |          | BI Dashboards           |
-             | Provider Analytics|          | Cost Optimization       |
-             +-------------------+          +------------------------+
+
+
 
 ⚙️ Workflow
 
