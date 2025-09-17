@@ -1,0 +1,6 @@
+claim_id,patient_id,patient_name,provider_id,provider_name,claim_amount,diagnosis_code,service_date,received_date,claim_status
+C0001,P001,John Doe,PR001,City Hospital,250.50,I10,2025-08-01,2025-08-03,paid
+C0002,P002,Jane Smith,PR002,North Clinic,1250.00,E11,2025-08-01,2025-08-04,pending
+C0003,P001,John Doe,PR001,City Hospital,75.00,J20,2025-08-02,2025-08-05,denied
+C0004,P003,Emily Jones,PR003,West Medical,980.00,I25,2025-08-02,2025-08-06,paid
+C0005,P004,Robert Brown,PR002,North Clinic,60.00,R05,2025-08-03,2025-08-07,paid

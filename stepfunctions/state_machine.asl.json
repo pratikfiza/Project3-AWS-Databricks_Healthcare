@@ -1,0 +1,31 @@
+{
+  "Comment": "Claims ETL orchestration: S3 ingest -> Trigger Databricks job",
+  "StartAt": "TriggerDatabricks",
+  "States": {
+    "TriggerDatabricks": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:REGION:ACCOUNT_ID:function:trigger_databricks_job",
+        "Payload": {
+          "job_params": {
+            "raw_path": "s3a://my-claims-bucket/raw/",
+            "bronze_path": "s3a://my-claims-bucket/bronze/claims/",
+            "silver_fact_path": "s3a://my-claims-bucket/silver/claims_fact/"
+          }
+        }
+      },
+      "Next": "Notify"
+    },
+    "Notify": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:REGION:ACCOUNT_ID:claims-notifications",
+        "Message": "Databricks claims ETL job triggered",
+        "Subject": "Claims ETL Triggered"
+      },
+      "End": true
+    }
+  }
+}
