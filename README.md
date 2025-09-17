@@ -7,6 +7,7 @@ The architecture leverages a Medallion (Bronze-Silver-Gold) Data Lakehouse patte
 
  Architecture Diagram
 
+![Alt text](data/readmeimg.png)
 
 
 ⚙️ Workflow
@@ -53,24 +54,6 @@ Databricks SQL for interactive queries.
 
 Athena + QuickSight/PowerBI/Tableau for dashboards.
 
-📂 Project Structure
-healthcare-payer-dw/
-│── lambda_ingestion/
-│   ├── lambda_function.py          # AWS Lambda function for ingestion
-│── databricks_notebooks/
-│   ├── bronze_to_silver.py         # Cleansing & validation
-│   ├── silver_to_gold.py           # Aggregations & analytics
-│   ├── scd2_providers.py           # Slowly Changing Dimensions (Providers)
-│   ├── scd2_patients.py            # Slowly Changing Dimensions (Patients)
-│── configs/
-│   ├── schema.json                 # Expected schema definition
-│   ├── masking_rules.json          # PII masking rules
-│── sql_queries/
-│   ├── fraud_detection.sql         # Fraud detection queries
-│   ├── cost_optimization.sql       # Cost optimization queries
-│── orchestration/
-│   ├── step_function_definition.json  # AWS Step Function definition
-│── README.md
 
 🔑 Key Features
 
